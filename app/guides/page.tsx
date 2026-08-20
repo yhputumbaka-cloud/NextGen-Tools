@@ -4,10 +4,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FOUNDATIONS, INDUSTRIES } from "@/lib/industries";
 import { getGuidesByIndustry } from "@/lib/guides";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Guides — NextGen Tools",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Guides | NextGen Tools",
+  description:
+    "Browse free AI and digital tool guides by industry: restaurants, personal care services, and sports, fitness, and recreation.",
+  path: "/guides",
+});
 
 export default function GuidesPage() {
   const foundationsCount = getGuidesByIndustry(FOUNDATIONS.slug).length;

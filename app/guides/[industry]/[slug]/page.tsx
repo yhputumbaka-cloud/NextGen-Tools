@@ -12,6 +12,8 @@ import SaveButton from "@/components/guides/SaveButton";
 import GatedGuideContent from "@/components/guides/GatedGuideContent";
 import { FOUNDATIONS, getIndustryLabel } from "@/lib/industries";
 import { getAllGuides, getGuideBySlug, getNextGuide } from "@/lib/guides";
+import { buildMetadata, guideDescription } from "@/lib/metadata";
+import { buildFaqJsonLd } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return getAllGuides().map((guide) => ({
@@ -26,9 +28,20 @@ export async function generateMetadata({
   const { industry, slug } = await params;
   const guide = getGuideBySlug(industry, slug);
 
-  return {
-    title: guide ? `${guide.title} — NextGen Tools` : "Guide — NextGen Tools",
-  };
+  if (!guide) {
+    return buildMetadata({
+      title: "Guide | NextGen Tools",
+      description: "Browse the NextGen Tools guide library.",
+      path: `/guides/${industry}/${slug}`,
+    });
+  }
+
+  return buildMetadata({
+    title: `${guide.title} | NextGen Tools`,
+    description: guideDescription(guide.summary),
+    path: `/guides/${industry}/${slug}`,
+    type: "article",
+  });
 }
 
 export default async function GuidePage({
@@ -42,9 +55,18 @@ export default async function GuidePage({
   const nextGuide = getNextGuide(industry, slug);
   const { content } = guide;
   const backHref = industry === FOUNDATIONS.slug ? "/guides" : `/guides/${industry}`;
+  const faqJsonLd = buildFaqJsonLd(content.faqs);
 
   return (
     <>
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <Header />
       <main className="flex-1">
         <article className="mx-auto max-w-3xl px-6 py-16">

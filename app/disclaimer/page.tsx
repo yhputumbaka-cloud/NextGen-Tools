@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Disclaimer — NextGen Tools",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Disclaimer | NextGen Tools",
+  description:
+    "Important context on how to use the NextGen Tools guide library, including how case studies and tool references should be read.",
+  path: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
   return (

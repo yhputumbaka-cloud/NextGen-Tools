@@ -13,6 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+// Fallback metadata for any route that doesn't define its own (error pages,
+// etc.) — every real page sets its own title/description/OG/Twitter tags
+// via buildMetadata().
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: "NextGen Tools — Free AI & Digital Tool Guides for Independent Businesses",

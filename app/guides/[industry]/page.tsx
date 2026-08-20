@@ -7,6 +7,7 @@ import FoundationsGuideGrid from "@/components/guides/FoundationsGuideGrid";
 import SignupBanner from "@/components/guides/SignupBanner";
 import { FOUNDATIONS, INDUSTRIES, getIndustry } from "@/lib/industries";
 import { getGuidesByIndustry } from "@/lib/guides";
+import { buildMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return [...INDUSTRIES.map((i) => ({ industry: i.slug })), { industry: FOUNDATIONS.slug }];
@@ -16,12 +17,22 @@ export async function generateMetadata({
   params,
 }: PageProps<"/guides/[industry]">): Promise<Metadata> {
   const { industry: industrySlug } = await params;
-  const name =
-    industrySlug === FOUNDATIONS.slug
-      ? FOUNDATIONS.name
-      : getIndustry(industrySlug)?.name;
+  const industry =
+    industrySlug === FOUNDATIONS.slug ? FOUNDATIONS : getIndustry(industrySlug);
 
-  return { title: name ? `${name} — NextGen Tools` : "Guides — NextGen Tools" };
+  if (!industry) {
+    return buildMetadata({
+      title: "Guides | NextGen Tools",
+      description: "Browse the NextGen Tools guide library.",
+      path: `/guides/${industrySlug}`,
+    });
+  }
+
+  return buildMetadata({
+    title: `${industry.name} Guides | NextGen Tools`,
+    description: industry.description,
+    path: `/guides/${industrySlug}`,
+  });
 }
 
 export default async function IndustryGuidesPage({

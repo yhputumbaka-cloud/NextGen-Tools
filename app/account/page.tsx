@@ -6,9 +6,16 @@ import SavedGuidesList from "@/components/account/SavedGuidesList";
 import { createClient } from "@/lib/supabase/server";
 import { getAllGuides } from "@/lib/guides";
 import type { GuideFrontmatter } from "@/lib/guide-constants";
+import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "My Library — NextGen Tools",
+  ...buildMetadata({
+    title: "My Library | NextGen Tools",
+    description: "Guides you've saved for later.",
+    path: "/account",
+  }),
+  // Personal, logged-in-only content — not meant to rank.
+  robots: { index: false, follow: false },
 };
 
 export default async function AccountPage() {

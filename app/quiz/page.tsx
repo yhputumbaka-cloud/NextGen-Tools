@@ -4,12 +4,14 @@ import Footer from "@/components/Footer";
 import QuizFlow from "@/components/quiz/QuizFlow";
 import { getAllGuides } from "@/lib/guides";
 import type { GuideFrontmatter } from "@/lib/guide-constants";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Guide Finder — NextGen Tools",
+export const metadata: Metadata = buildMetadata({
+  title: "Guide Finder | NextGen Tools",
   description:
     "Answer four quick questions to get a starting path through the guide library.",
-};
+  path: "/quiz",
+});
 
 export default function QuizPage() {
   const guides: GuideFrontmatter[] = getAllGuides().map((guide) => ({

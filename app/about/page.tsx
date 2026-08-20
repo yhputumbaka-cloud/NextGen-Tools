@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About — NextGen Tools",
+export const metadata: Metadata = buildMetadata({
+  title: "About | NextGen Tools",
   description:
-    "Why NextGen Tools exists, and the story behind the free guide library.",
-};
+    "Why NextGen Tools exists: free, practical guides that give independent business owners the same tools bigger businesses take for granted.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

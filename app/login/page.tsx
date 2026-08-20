@@ -2,10 +2,16 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoginForm from "@/components/auth/LoginForm";
+import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Log In — NextGen Tools",
-  description: "Log in or create an account to save your progress.",
+  ...buildMetadata({
+    title: "Log In | NextGen Tools",
+    description: "Log in or create an account to save your progress.",
+    path: "/login",
+  }),
+  // Transactional utility page, not meant to rank on its own.
+  robots: { index: false, follow: true },
 };
 
 export default async function LoginPage({

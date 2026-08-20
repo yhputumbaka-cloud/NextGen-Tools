@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/contact/ContactForm";
+import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact — NextGen Tools",
-  description: "Ask a question or request a new guide topic.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Contact | NextGen Tools",
+  description:
+    "Ask a question or suggest a new guide topic — send us a note anytime.",
+  path: "/contact",
+});
 
 const CONTACT_EMAIL = "yhputumbaka@gmail.com";
 
