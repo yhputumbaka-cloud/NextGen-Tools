@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+import { useSessionState } from "@/lib/hooks/useSessionState";
 
 const NAV_LINKS = [
   { href: "/guides", label: "Guides" },
@@ -11,6 +13,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const { hasSession } = useSessionState();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -18,6 +21,11 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  async function handleLogout() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+  }
 
   return (
     <header
@@ -47,6 +55,28 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
+          {hasSession ? (
+            <div className="flex items-center gap-5">
+              <Link href="/account" className="transition-colors hover:text-navy">
+                Account
+              </Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="transition-colors hover:text-navy"
+              >
+                Log out
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-md bg-navy px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-navy-deep"
+            >
+              Log in
+            </Link>
+          )}
         </nav>
       </div>
     </header>

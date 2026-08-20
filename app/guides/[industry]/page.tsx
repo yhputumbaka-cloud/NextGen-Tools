@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GuidesBrowser from "@/components/guides/GuidesBrowser";
-import GuideCard from "@/components/guides/GuideCard";
+import FoundationsGuideGrid from "@/components/guides/FoundationsGuideGrid";
+import SignupBanner from "@/components/guides/SignupBanner";
 import { FOUNDATIONS, INDUSTRIES, getIndustry } from "@/lib/industries";
 import { getGuidesByIndustry } from "@/lib/guides";
 
@@ -43,11 +44,11 @@ export default async function IndustryGuidesPage({
               {FOUNDATIONS.description}
             </p>
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {guides.map((guide) => (
-                <GuideCard key={guide.slug} guide={guide} />
-              ))}
+            <div className="mt-10">
+              <SignupBanner />
             </div>
+
+            <FoundationsGuideGrid guides={guides} />
           </section>
         </main>
         <Footer />
@@ -72,7 +73,8 @@ export default async function IndustryGuidesPage({
             {industry.description}
           </p>
 
-          <div className="mt-12">
+          <div className="mt-10">
+            <SignupBanner />
             <GuidesBrowser guides={guides} categories={industry.categories} />
           </div>
         </section>

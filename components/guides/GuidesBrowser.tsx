@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { TIER_CONFIG, TIER_ORDER, type Guide, type GuideTier } from "@/lib/guide-constants";
+import { useSessionState } from "@/lib/hooks/useSessionState";
+import { isGuideUnlocked } from "@/lib/unlocked-guides";
 import GuideCard from "./GuideCard";
 
 export default function GuidesBrowser({
@@ -16,6 +18,12 @@ export default function GuidesBrowser({
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("All");
   const [tier, setTier] = useState<GuideTier | null>(null);
+  const { hasSession, checked } = useSessionState();
+
+  function isLocked(guide: Guide) {
+    if (!checked || hasSession) return false;
+    return !isGuideUnlocked(guide.industry, guide.slug);
+  }
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -101,7 +109,7 @@ export default function GuidesBrowser({
             </h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {group.guides.map((guide) => (
-                <GuideCard key={guide.slug} guide={guide} />
+                <GuideCard key={guide.slug} guide={guide} locked={isLocked(guide)} />
               ))}
             </div>
           </section>

@@ -6,9 +6,10 @@ import Footer from "@/components/Footer";
 import CategoryTag from "@/components/guides/CategoryTag";
 import TierTag from "@/components/guides/TierTag";
 import MarkdownText from "@/components/guides/MarkdownText";
-import AIPromptBlock from "@/components/guides/AIPromptBlock";
 import CoversList from "@/components/guides/CoversList";
 import RequirementCallout from "@/components/guides/RequirementCallout";
+import SaveButton from "@/components/guides/SaveButton";
+import GatedGuideContent from "@/components/guides/GatedGuideContent";
 import { FOUNDATIONS, getIndustryLabel } from "@/lib/industries";
 import { getAllGuides, getGuideBySlug, getNextGuide } from "@/lib/guides";
 
@@ -74,6 +75,10 @@ export default async function GuidePage({
             {guide.title}
           </h1>
 
+          <div className="mt-6">
+            <SaveButton industry={industry} slug={slug} />
+          </div>
+
           <div className="mt-10 rounded-xl border border-line bg-panel p-8 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-widest text-navy">
               What This Guide Covers
@@ -124,62 +129,12 @@ export default async function GuidePage({
             </section>
           )}
 
-          <section className="mt-14">
-            <h2 className="text-2xl font-semibold text-navy-deep">
-              Step-by-Step Guide
-            </h2>
-            <ol className="relative mt-6">
-              {content.steps.map((step, i) => (
-                <li key={step.number} className="relative flex gap-5 pb-10 last:pb-0">
-                  {i < content.steps.length - 1 && (
-                    <span
-                      aria-hidden
-                      className="absolute left-5 top-10 bottom-0 w-px bg-line"
-                    />
-                  )}
-                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy text-sm font-semibold text-white">
-                    {step.number}
-                  </span>
-                  <div className="flex-1 pt-1.5">
-                    <h3 className="font-semibold text-navy-deep">
-                      {step.title}
-                    </h3>
-                    <div className="mt-3 space-y-4 text-body-soft">
-                      {step.blocks.map((block, bi) => {
-                        if (block.type === "prompt") {
-                          return <AIPromptBlock key={bi} prompt={block.content} />;
-                        }
-                        if (block.type === "requirement") {
-                          return (
-                            <RequirementCallout key={bi} content={block.content} />
-                          );
-                        }
-                        return <MarkdownText key={bi} content={block.content} />;
-                      })}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-
-          <section className="mt-14">
-            <h2 className="text-2xl font-semibold text-navy-deep">
-              Frequently Asked Questions
-            </h2>
-            <div className="mt-4 divide-y divide-line border-t border-line">
-              {content.faqs.map((faq) => (
-                <div key={faq.question} className="py-6">
-                  <p className="font-semibold text-navy-deep">
-                    {faq.question}
-                  </p>
-                  <div className="mt-2 text-body-soft">
-                    <MarkdownText content={faq.answer} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          <GatedGuideContent
+            industry={industry}
+            slug={slug}
+            steps={content.steps}
+            faqs={content.faqs}
+          />
 
           <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8 text-sm font-medium">
             <Link href={backHref} className="text-navy hover:text-navy-deep">

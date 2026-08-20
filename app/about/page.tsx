@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -54,6 +55,25 @@ export default function AboutPage() {
                 business, not a technology company.
               </p>
             </div>
+          </section>
+
+          <section className="mt-14">
+            <h2 className="text-2xl font-semibold text-navy-deep">
+              Join the Community
+            </h2>
+            <p className="mt-4 text-body-soft leading-relaxed">
+              There&apos;s a Discord for owners working through these guides,
+              swapping what&apos;s worked, and asking questions along the
+              way. It&apos;s free to join.
+            </p>
+            <Link
+              href="https://discord.gg/SpSMwbP2z"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center justify-center rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-all hover:-translate-y-0.5 hover:border-navy hover:text-navy"
+            >
+              Join the Community
+            </Link>
           </section>
 
           <section className="mt-14 rounded-xl border border-line bg-panel p-8 shadow-sm">

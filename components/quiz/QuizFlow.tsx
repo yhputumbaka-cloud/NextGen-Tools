@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { FOUNDATIONS, INDUSTRIES, getIndustry } from "@/lib/industries";
 import { QUIZ_PAIN_POINTS } from "@/lib/quiz-pain-points";
 import { TIER_CONFIG, type GuideFrontmatter, type GuideTier } from "@/lib/guide-constants";
+import { unlockGuides } from "@/lib/unlocked-guides";
 import GuideCard from "@/components/guides/GuideCard";
 
 type Familiarity = "new" | "little" | "comfortable";
@@ -108,6 +109,12 @@ export default function QuizFlow({ guides }: { guides: GuideFrontmatter[] }) {
     return result;
   }, [step, answers, guides]);
 
+  useEffect(() => {
+    if (step === TOTAL_QUESTIONS && path.length > 0) {
+      unlockGuides(path.map((g) => ({ industry: g.industry, slug: g.slug })));
+    }
+  }, [step, path]);
+
   if (step === TOTAL_QUESTIONS) {
     const industry = answers.industrySlug ? getIndustry(answers.industrySlug) : undefined;
     const tierLabel = answers.tier ? TIER_CONFIG[answers.tier].label.toLowerCase() : "";
@@ -125,6 +132,16 @@ export default function QuizFlow({ guides }: { guides: GuideFrontmatter[] }) {
           {industry?.name ?? "guide"} library focused on {answers.category}, sized
           to a {tierLabel} pace.
         </p>
+
+        {path.length > 0 && (
+          <p className="mt-3 text-sm text-muted">
+            These guides are unlocked for you right now, no signup needed.{" "}
+            <Link href="/login" className="font-medium text-navy hover:text-navy-deep">
+              Sign up free
+            </Link>{" "}
+            to unlock the rest of the library.
+          </p>
+        )}
 
         {path.length > 0 ? (
           <ol className="relative mt-10">

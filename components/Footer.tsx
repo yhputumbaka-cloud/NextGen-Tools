@@ -11,6 +11,14 @@ export default function Footer() {
           digital tools to work.
         </p>
         <div className="flex items-center gap-6">
+          <Link
+            href="https://discord.gg/SpSMwbP2z"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-navy"
+          >
+            Join the Community
+          </Link>
           <Link href="/disclaimer" className="transition-colors hover:text-navy">
             Disclaimer
           </Link>
