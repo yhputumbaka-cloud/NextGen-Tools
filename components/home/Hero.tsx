@@ -44,6 +44,14 @@ export default function Hero() {
             Join the Community
           </Link>
         </div>
+
+        <Link
+          href="/quiz"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-navy transition-colors hover:text-navy-deep"
+        >
+          Not sure where to start? Take the 1-minute Guide Finder
+          <span aria-hidden>&rarr;</span>
+        </Link>
       </Reveal>
 
       <Reveal

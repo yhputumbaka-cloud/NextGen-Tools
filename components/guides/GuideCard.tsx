@@ -1,10 +1,10 @@
 import Link from "next/link";
-import type { Guide } from "@/lib/guide-constants";
+import type { GuideFrontmatter } from "@/lib/guide-constants";
 import { FOUNDATIONS } from "@/lib/industries";
 import CategoryTag from "./CategoryTag";
 import TierTag from "./TierTag";
 
-export default function GuideCard({ guide }: { guide: Guide }) {
+export default function GuideCard({ guide }: { guide: GuideFrontmatter }) {
   return (
     <Link
       href={`/guides/${guide.industry}/${guide.slug}`}
