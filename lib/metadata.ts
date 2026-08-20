@@ -28,9 +28,9 @@ export function buildMetadata({
 }): Metadata {
   const url = `${getSiteUrl()}${path}`;
   // A page-level `openGraph`/`twitter` object replaces (rather than merges
-  // with) whatever the root `opengraph-image.tsx` file convention would
+  // with) whatever the root `opengraph-image.png` file convention would
   // otherwise inject — so every page has to carry the image explicitly.
-  const ogImage = `${getSiteUrl()}/opengraph-image`;
+  const ogImage = `${getSiteUrl()}/opengraph-image.png`;
 
   return {
     title,
