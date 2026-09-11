@@ -8,6 +8,7 @@ import { useSessionState } from "@/lib/hooks/useSessionState";
 const NAV_LINKS = [
   { href: "/guides", label: "Guides" },
   { href: "/about", label: "About" },
+  { href: "/1-1-help", label: "1:1 Help" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
 import WhyThisExists from "@/components/home/WhyThisExists";
 import IndustryPreview from "@/components/home/IndustryPreview";
+import HelpCTA from "@/components/home/HelpCTA";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <WhyThisExists />
         <IndustryPreview />
+        <HelpCTA />
       </main>
       <Footer />
     </>
