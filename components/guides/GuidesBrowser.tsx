@@ -61,7 +61,7 @@ export default function GuidesBrowser({
             key={name}
             type="button"
             onClick={() => setCategory(name)}
-            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-[color,background-color,border-color,transform] active:scale-[0.97] ${
               category === name
                 ? "border-navy bg-navy text-white"
                 : "border-line bg-panel text-body-soft hover:border-navy hover:text-navy"
@@ -80,7 +80,7 @@ export default function GuidesBrowser({
               key={t}
               type="button"
               onClick={() => setTier(isActive ? null : t)}
-              className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+              className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-[color,background-color,border-color,transform] active:scale-[0.97] ${
                 isActive
                   ? "border-navy bg-navy text-white"
                   : "border-line bg-panel text-body-soft hover:border-navy hover:text-navy"

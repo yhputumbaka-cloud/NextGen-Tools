@@ -107,7 +107,7 @@ export default function SaveButton({
       type="button"
       onClick={handleClick}
       disabled={!ready || busy}
-      className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 ${
+      className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-semibold transition-[transform,border-color,color] hover:-translate-y-0.5 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:active:scale-100 ${
         saved
           ? "border-navy bg-navy/5 text-navy"
           : "border-line bg-panel text-body-soft hover:border-navy hover:text-navy"

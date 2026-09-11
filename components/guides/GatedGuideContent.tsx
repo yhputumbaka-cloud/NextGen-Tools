@@ -128,7 +128,7 @@ export default function GatedGuideContent({
           </p>
           <Link
             href={`/login?next=${encodeURIComponent(`/guides/${industry}/${slug}`)}`}
-            className="mt-5 inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-navy-deep"
+            className="mt-5 inline-flex items-center justify-center rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-navy-deep active:scale-[0.97]"
           >
             Sign Up Free
           </Link>

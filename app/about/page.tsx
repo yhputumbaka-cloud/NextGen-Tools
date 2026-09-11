@@ -72,7 +72,7 @@ export default function AboutPage() {
               href="https://discord.gg/SpSMwbP2z"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center justify-center rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-all hover:-translate-y-0.5 hover:border-navy hover:text-navy"
+              className="mt-5 inline-flex items-center justify-center rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-[transform,border-color,color] hover:-translate-y-0.5 hover:border-navy hover:text-navy active:scale-[0.97]"
             >
               Join the Community
             </Link>

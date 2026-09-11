@@ -52,7 +52,7 @@ export default function SavedGuidesList({
       {guides.map((guide) => (
         <div
           key={`${guide.industry}-${guide.slug}`}
-          className="flex flex-col rounded-xl border border-line bg-panel p-6 transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
+          className="flex flex-col rounded-xl border border-line bg-panel p-6 transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
         >
           <Link href={`/guides/${guide.industry}/${guide.slug}`}>
             <div className="flex flex-wrap items-center gap-2">
@@ -67,7 +67,7 @@ export default function SavedGuidesList({
           <button
             type="button"
             onClick={() => handleRemove(guide)}
-            className="mt-4 self-start text-sm font-medium text-danger transition-colors hover:text-navy-deep"
+            className="mt-4 self-start text-sm font-medium text-danger transition-[color,transform] hover:text-navy-deep active:scale-[0.97]"
           >
             Remove
           </button>

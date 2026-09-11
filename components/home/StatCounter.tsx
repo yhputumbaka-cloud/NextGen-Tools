@@ -22,10 +22,22 @@ export default function StatCounter({
     const el = ref.current;
     if (!el) return;
 
+    let frameId: number | undefined;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || hasAnimated.current) return;
         hasAnimated.current = true;
+
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (reduceMotion) {
+          setCount(target);
+          observer.disconnect();
+          return;
+        }
 
         const duration = 900;
         const start = performance.now();
@@ -34,17 +46,21 @@ export default function StatCounter({
           const progress = Math.min((now - start) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           setCount(Math.round(target * eased));
-          if (progress < 1) requestAnimationFrame(step);
+          if (progress < 1) frameId = requestAnimationFrame(step);
         };
 
-        requestAnimationFrame(step);
+        frameId = requestAnimationFrame(step);
         observer.disconnect();
       },
       { threshold: 0.4 },
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      if (frameId !== undefined) cancelAnimationFrame(frameId);
+    };
   }, [target]);
 
   return (

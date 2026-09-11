@@ -88,7 +88,7 @@ export default function LoginForm({ next = "/" }: { next?: string }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+          className="w-full rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-navy-deep active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:active:scale-100"
         >
           {status === "sending" ? "Sending..." : "Send me a login link"}
         </button>
@@ -106,7 +106,7 @@ export default function LoginForm({ next = "/" }: { next?: string }) {
         type="button"
         onClick={handleGoogleLogin}
         disabled={googleLoading}
-        className="w-full rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-all hover:-translate-y-0.5 hover:border-navy hover:text-navy disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+        className="w-full rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-[transform,border-color,color] hover:-translate-y-0.5 hover:border-navy hover:text-navy active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:active:scale-100"
       >
         {googleLoading ? "Redirecting..." : "Continue with Google"}
       </button>

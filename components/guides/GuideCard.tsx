@@ -15,7 +15,7 @@ export default function GuideCard({
   return (
     <Link
       href={`/guides/${guide.industry}/${guide.slug}`}
-      className="group relative flex flex-col rounded-xl border border-line bg-panel p-6 transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
+      className="group relative flex flex-col rounded-xl border border-line bg-panel p-6 transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-navy hover:shadow-md active:scale-[0.98]"
     >
       {locked && (
         <span

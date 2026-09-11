@@ -73,7 +73,7 @@ export default function Header() {
           ) : (
             <Link
               href="/login"
-              className="rounded-md bg-navy px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-navy-deep"
+              className="rounded-md bg-navy px-4 py-2 text-sm font-semibold text-white transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-navy-deep active:scale-[0.97]"
             >
               Log in
             </Link>

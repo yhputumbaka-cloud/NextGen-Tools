@@ -32,7 +32,7 @@ export default function AIPromptBlock({ prompt }: { prompt: string }) {
         <button
           type="button"
           onClick={handleCopy}
-          className="text-xs font-medium text-slate-400 transition-colors hover:text-white"
+          className="text-xs font-medium text-slate-400 transition-[color,transform] hover:text-white active:scale-95"
         >
           {copied ? "Copied" : "Copy"}
         </button>

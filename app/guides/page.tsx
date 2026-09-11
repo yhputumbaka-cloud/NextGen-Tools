@@ -32,7 +32,7 @@ export default function GuidesPage() {
 
           <Link
             href={`/guides/${FOUNDATIONS.slug}`}
-            className="group mt-10 flex flex-col rounded-xl border border-navy/15 bg-navy/5 p-7 transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md sm:flex-row sm:items-center sm:justify-between"
+            className="group mt-10 flex flex-col rounded-xl border border-navy/15 bg-navy/5 p-7 transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-navy hover:shadow-md active:scale-[0.98] sm:flex-row sm:items-center sm:justify-between"
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-navy">
@@ -62,7 +62,7 @@ export default function GuidesPage() {
                 <Link
                   key={industry.slug}
                   href={`/guides/${industry.slug}`}
-                  className="group flex flex-col rounded-xl border border-line bg-panel p-7 transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
+                  className="group flex flex-col rounded-xl border border-line bg-panel p-7 transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-navy hover:shadow-md active:scale-[0.98]"
                 >
                   <h3 className="text-lg font-semibold text-navy-deep">
                     {industry.name}

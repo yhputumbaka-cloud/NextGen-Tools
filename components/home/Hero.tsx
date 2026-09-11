@@ -31,7 +31,7 @@ export default function Hero() {
         <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/guides"
-            className="rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-navy-deep"
+            className="rounded-md bg-navy px-6 py-3 text-sm font-semibold text-white transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-navy-deep active:scale-[0.97]"
           >
             Browse the Guides
           </Link>
@@ -39,7 +39,7 @@ export default function Hero() {
             href="https://discord.gg/SpSMwbP2z"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-all hover:-translate-y-0.5 hover:border-navy hover:text-navy"
+            className="rounded-md border border-line bg-panel px-6 py-3 text-sm font-semibold text-body-soft transition-[transform,border-color,color] hover:-translate-y-0.5 hover:border-navy hover:text-navy active:scale-[0.97]"
           >
             Join the Community
           </Link>

@@ -57,7 +57,7 @@ function OptionButton({
     <button
       type="button"
       onClick={onClick}
-      className="w-full rounded-xl border border-line bg-panel p-5 text-left transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
+      className="w-full rounded-xl border border-line bg-panel p-5 text-left transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-navy hover:shadow-md active:scale-[0.97]"
     >
       <p className="font-semibold text-navy-deep">{title}</p>
       {description && <p className="mt-1 text-sm text-muted">{description}</p>}
@@ -214,8 +214,8 @@ export default function QuizFlow({ guides }: { guides: GuideFrontmatter[] }) {
         </div>
         <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-line">
           <div
-            className="h-full rounded-full bg-navy transition-all duration-300"
-            style={{ width: `${progress}%` }}
+            className="h-full w-full origin-left rounded-full bg-navy transition-transform duration-300 ease-out"
+            style={{ transform: `scaleX(${progress / 100})` }}
           />
         </div>
       </div>

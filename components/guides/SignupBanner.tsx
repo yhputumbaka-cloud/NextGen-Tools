@@ -46,7 +46,7 @@ export default function SignupBanner() {
         <div className="flex items-center gap-5">
           <Link
             href="/login"
-            className="rounded-md bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-navy-deep"
+            className="rounded-md bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-navy-deep active:scale-[0.97]"
           >
             Sign Up Free
           </Link>
@@ -54,7 +54,7 @@ export default function SignupBanner() {
             type="button"
             onClick={handleDismiss}
             aria-label="Dismiss"
-            className="text-lg leading-none text-muted transition-colors hover:text-body-soft"
+            className="text-lg leading-none text-muted transition-[color,transform] hover:text-body-soft active:scale-95"
           >
             &times;
           </button>

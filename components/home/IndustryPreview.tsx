@@ -19,7 +19,7 @@ export default function IndustryPreview() {
           <Reveal key={industry.slug} delayMs={i * 80}>
             <Link
               href={`/guides/${industry.slug}`}
-              className="group flex h-full flex-col rounded-xl border border-line bg-panel p-7 transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
+              className="group flex h-full flex-col rounded-xl border border-line bg-panel p-7 transition-[transform,border-color,box-shadow] hover:-translate-y-0.5 hover:border-navy hover:shadow-md active:scale-[0.98]"
             >
               <h3 className="text-lg font-semibold text-navy-deep">
                 {industry.name}
